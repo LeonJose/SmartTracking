@@ -2,11 +2,12 @@
 <html lang="en">
 
 <head>
+   <base href="<?= base_url() ?>"></base>
    <meta charset="utf-8">
    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
    <meta name="description" content="Bootstrap Admin App + jQuery">
    <meta name="keywords" content="app, responsive, jquery, bootstrap, dashboard, admin">
-   <title>Angle - Bootstrap Admin Template</title>
+   <title>SmartTracking</title>
    <!-- =============== VENDOR STYLES ===============-->
    <!-- FONT AWESOME-->
    <link rel="stylesheet" href="vendor/fontawesome/css/font-awesome.min.css">
@@ -22,10 +23,11 @@
    <!-- =============== BOOTSTRAP STYLES ===============-->
    <link rel="stylesheet" href="vendor/site/css/bootstrap.css" id="bscss">
    <!-- =============== APP STYLES ===============-->
-   <link rel="stylesheet" href="vendor/site/css/site/app.css" id="maincss">
+   <link rel="stylesheet" href="vendor/site/css/app.css" id="maincss">
 
     <link rel="stylesheet" href="vendor/site/css/app.css" id="maincss">
-    <base href="<?= base_url() ?>"></base>
+    <style type="text/css"> #mapa{width: 100%; height: 500px; }</style>
+    
 
 </head>
 
@@ -92,9 +94,8 @@
 
                      <li class=" ">
                         <a href="widgets.html" title="Widgets">
-                           <div class="pull-right label label-success">30</div>
                            <em class="icon-grid"></em>
-                           <span data-localize="sidebar.nav.WIDGETS">Widgets</span>
+                           <span data-localize="sidebar.nav.WIDGETS">Dashboard</span>
                         </a>
                      </li>  
                      </ul>
@@ -111,5 +112,3 @@
                         Sistema 
                         <small data-localize="dashboard.WELCOME"></small>
                      </div>
-                  </div>
-               </section>
