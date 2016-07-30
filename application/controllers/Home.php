@@ -10,4 +10,9 @@ class Home extends CI_Controller {
 		$this->load->view('guardarRuta');
 		$this->load->view('footer');
 	}
+
+	public function saveItem() 
+	{
+	 	echo var_dump($_POST); die();
+	}
 }

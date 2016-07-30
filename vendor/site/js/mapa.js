@@ -140,5 +140,7 @@ function addMarker(mapa)
 
 function save ()
 {
-	console.log(cobertura)
+	var positions = document.getElementById('positions');
+	positions.setAttribute('values', cobertura);
+	console.log(cobertura);
 }

@@ -28,6 +28,8 @@
     <link rel="stylesheet" href="vendor/site/css/app.css" id="maincss">
     <style type="text/css"> #mapa{width: 100%; height: 500px; }</style>
     
+   <!-- JQUERY-->
+   <script src="vendor/jquery/dist/jquery.js"></script>
 
 </head>
 

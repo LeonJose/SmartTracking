@@ -13,8 +13,6 @@
    <script src="vendor/modernizr/modernizr.custom.js"></script>
    <!-- MATCHMEDIA POLYFILL-->
    <script src="vendor/matchMedia/matchMedia.js"></script>
-   <!-- JQUERY-->
-   <script src="vendor/jquery/dist/jquery.js"></script>
    <!-- BOOTSTRA-->
    <script src="vendor/bootstrap/dist/js/bootstrap.js"></script>
    <!-- STORAGE API-->
