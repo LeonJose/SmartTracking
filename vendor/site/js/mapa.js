@@ -15,7 +15,7 @@ var propertyMarker;
 
 function startMap()
 {
-	centro = new google.maps.LatLng(latitud, longuitud); //Establecer el punto 
+	centro = new google.maps.LatLng(latitud, longuitud); //Establecer el punto
 	var atributosMap=
 	{
 		center: centro,
@@ -52,12 +52,12 @@ function shearch()
 		if(lugarMarcador.geometry.viewport) { mapa.fitBounds(lugarMarcador.geometry.viewport);}
 		else { mapa.setCenter(lugarMarcador.geometry.location); mapa.setZoom(18); }
 		marcador.setPosition(lugarMarcador.geometry.location);
-		
+
 		//Capturar la posicion del marcador una vez concluida la shearch
 		latitudStatic=marcador.getPosition().lat();
 		longitudStatic=marcador.getPosition().lng();
 
-		//mueves el marcador de lugar 
+		//mueves el marcador de lugar
 		 marcador.setDraggable(true);
 
 		linea= new google.maps.Polyline({ strokeColor: '#C5C5C5', strokeWeight: 5});
@@ -84,9 +84,9 @@ function capturePosition(event)
 {
 	console.log(marcador.getPosition().lat());
 	console.log(marcador.getPosition().lng());
-}//end position 
+}//end position
 
-//dibujar la cobertura 
+//dibujar la cobertura
 function coverage(event)
 {
 	//latLng contiene las cordenadas
@@ -100,22 +100,22 @@ function coverage(event)
 		{
 			path: google.maps.SymbolPath.CIRCLE,
 			strokeColor: '#000000',
-			scale: 5,	
+			scale: 5,
 			stokeWeight: 5
 		},
 		map:mapa
-	};	
+	};
 	info= new google.maps.InfoWindow();
 	linemarker=new google.maps.Marker(propiedadesMarcador);
 	var getPositions=new Array(linemarker.getPosition().lat(), linemarker.getPosition().lng());
 	cobertura.push(getPositions);
-	
+
 	linemarker.addListener('click', function()
 	{
-			
+
 		console.log(cobertura);
 	});
-	
+
 }//endLinear
 
 function addMarker(mapa)
@@ -138,9 +138,16 @@ function addMarker(mapa)
 	 marcador.setMap(mapa);
 }
 
-function save ()
+function save()
 {
-	var positions = document.getElementById('positions');
-	positions.setAttribute('values', cobertura);
-	console.log(cobertura);
+	var a = {lat: '32.16', lon: '-16.214'};
+
+	$.ajax({
+		type: "POST",
+		url: "http://localhost/smarttracking/index.php/route/index",
+		data: {lat:'32.123456', lon:'-16.21478', positions: cobertura },
+		success: function (req){
+			console.log(req)
+		}
+	});
 }
