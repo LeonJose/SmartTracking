@@ -18,12 +18,28 @@ class Route extends REST_Controller
 
   public function index_post()
   {
+    if(! $this->post('positions'))
+    {
+      $this->response(array('status' =>'The object positions are empty'  ), 404);
+    }
       $data = $this->post('positions');
       $this->route_model->insert_route($data);
       $this->response($data);
   }
-  public function index_find($id)
+  public function find_get($id)
   {
-
+    if( !$id )
+    {
+      $this->response(null, 404);
+    }
+    $route = $this->route_model->searchRoute($id);
+    if( !is_null($route))
+    {
+      $this->response(array('routes' => $route),200);
+    }
+    else
+    {
+      $this->response(array('error' => 'No hay rutas'), 404);
+    }
   }
 }

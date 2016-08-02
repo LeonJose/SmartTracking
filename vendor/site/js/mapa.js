@@ -151,3 +151,16 @@ function save()
 		}
 	});
 }
+
+function getRoute()
+{
+	$.ajax({
+		type: 'GET', 
+		url: 'http://localhost/smarttracking/index.php/route/find/'+ 1,
+		success: function (req) 
+		{
+			console.log(req)
+		}
+
+		 });
+}

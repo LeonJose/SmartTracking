@@ -3,8 +3,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Route_model extends CI_Model
 {
-  public $lat;
-  public $lon;
+  public $id;
+  public $latitud;
+  public $longitud;
 
   function __construct()
   {
@@ -16,7 +17,13 @@ class Route_model extends CI_Model
   {
     foreach($data as list($a, $b))
     {
-        $this->db->insert('routes', array('lat' => $a, 'lon' => $b) );
+        $this->db->insert('direccionesrutas', array('id_ruta' => 1 ,'latitud' => $a, 'longitud' => $b) );
     }//end foreach
+  }
+
+  public function searchRoute($id)
+  {
+      $query = $this->db->select('*')->from('direccionesrutas')->where('id_ruta' ,$id)->get();
+      return $query->result();
   }
 }
