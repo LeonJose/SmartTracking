@@ -159,7 +159,19 @@ function getRoute()
 		url: 'http://localhost/smarttracking/index.php/route/find/'+ 1,
 		success: function (req) 
 		{
-			console.log(req)
+			var rutas = [];
+				$.each(req, function( index, value ) {
+				  $.each(value, function( index, v ) {
+					  rutas.push(new google.maps.LatLng(v.latitud, v.longitud))
+					});
+				});
+
+			var lineas = new google.maps.Polyline({        
+		    path: rutas,
+		    map: mapa, 
+		    strokeColor: '#000', 
+		    strokeWeight: 4,  
+		    clickable: false});
 		}
 
 		 });
