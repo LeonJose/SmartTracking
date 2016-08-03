@@ -42,4 +42,22 @@ class Route extends REST_Controller
       $this->response(array('error' => 'No hay rutas'), 404);
     }
   }
+
+  public function location_get($id)
+  {
+    if( !$id )
+    {
+      $this->response(null, 404);
+    }
+    $location = $this->route_model->searchActualLocation($id);
+    if( !is_null($location))
+    {
+      $this->response(array('location' => $location),200);
+    }
+    else
+    {
+      $this->response(array('error' => 'No hay registros'), 404);
+    }
+  }
+
 }

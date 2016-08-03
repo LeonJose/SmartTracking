@@ -1,7 +1,7 @@
 <?php
 	//use files
-	require_once('connection.php');
-	require_once('exceptions.php');
+	require_once('../accesoDatos/conexion.php');
+	//require_once('../accesoDatos/exceptions.php');
 	
 	class DireccionesRuta extends Connection
 	{
@@ -60,7 +60,6 @@
 				parent::close_connection();
 
 				return $resultsArray;
-			}
 		}
 
 	}

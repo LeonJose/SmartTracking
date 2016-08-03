@@ -26,4 +26,10 @@ class Route_model extends CI_Model
       $query = $this->db->select('*')->from('direccionesrutas')->where('id_ruta' ,$id)->get();
       return $query->result();
   }
+
+  public function searchActualLocation($id)
+  {
+      $query = $this->db->select('*')->from('datosruta')->where('id_ruta',$id)->order_by("id_datosruta", "desc")->limit(1)->get();
+      return $query->result();
+  }
 }

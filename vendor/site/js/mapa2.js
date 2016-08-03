@@ -11,10 +11,24 @@ var latitudStatic;
 var longitudStatic;
 var cobertura=[];
 var propertyMarker;
+var id = 1;
+
+function obtenerRutas()
+{
+
+	$('#rutascamiones').change(function()
+	{
+		id = $("#rutascamiones").val();
+		startMap();
+	});
+	startMap();
+	setInterval( startMap, 8000);
+}
 
 
 function startMap()
 {
+	
 	centro = new google.maps.LatLng(latitud, longuitud); //Establecer el punto
 	var atributosMap=
 	{
@@ -27,7 +41,8 @@ function startMap()
 	};
 	mapa=new google.maps.Map(document.getElementById('mapa'), atributosMap);
 	addMarker( mapa);
-	getRoute();
+	getRoute(id);
+
 }
 
 
@@ -52,26 +67,50 @@ function addMarker(mapa)
 }
 
 
-function getRoute()
+function getRoute(id)
 {
 	$.ajax({
 		type: 'GET', 
-		url: 'http://localhost/smarttracking/index.php/route/find/'+ 1,
-		success: function (req) 
+		url: 'http://localhost/smarttracking/index.php/route/find/'+ id,
+		success: function (req)
 		{
-			var rutas = [];
-				$.each(req, function( index, value ) {
-				  $.each(value, function( index, v ) {
-					  rutas.push(new google.maps.LatLng(v.latitud, v.longitud))
+			$.ajax({
+			type: 'GET', 
+			url: 'http://localhost/smarttracking/index.php/route/location/'+ id,
+			success: function (req2) 
+			{
+				var pos = new google.maps.LatLng(req2.location[0]['latitud'],req2.location[0]['longitud']);
+				 
+				var marker = new google.maps.Marker({
+				      position: pos,
+				      map: mapa,
+				      title:"Ubiaccion Actual del Camion",
+				      animation: google.maps.Animation.DROP
+				  });
+				console.log(req2.location[0]['latitud']);
+				console.log(req);
+				var rutas = [];
+					$.each(req, function( index, value ) {
+					  $.each(value, function( index, v ) {
+						  rutas.push(new google.maps.LatLng(v.latitud, v.longitud))
+						});
 					});
-				});
 
-			var lineas = new google.maps.Polyline({        
-		    path: rutas,
-		    map: mapa, 
-		    strokeColor: '#000', 
-		    strokeWeight: 4,  
-		    clickable: false});
+				var lineas = new google.maps.Polyline({        
+			    path: rutas,
+			    map: mapa, 
+			    strokeColor: '#000', 
+			    strokeWeight: 4,  
+			    clickable: false});
+
+				if (google.maps.geometry.poly.isLocationOnEdge(pos, rutas, 10e-1)) {
+				    alert("Relocate!");
+				  }
+
+		    }
+
+		 });
+
 		}
 
 		 });
