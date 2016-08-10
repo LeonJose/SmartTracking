@@ -22,7 +22,7 @@ function obtenerRutas()
 		startMap();
 	});
 	startMap();
-//	setInterval( startMap, 8000);
+	setInterval( startMap, 8000);
 }
 
 
@@ -107,7 +107,7 @@ function getRoute(id)
 			    strokeWeight: 4,
 			    clickable: false});
 
-					if (google.maps.geometry.poly.isLocationOnEdge(pos, lineas))
+					if (google.maps.geometry.poly.isLocationOnEdge(pos, lineas, 10e-7))
 					{
 						console.log('Dentro del rango');
 					}
