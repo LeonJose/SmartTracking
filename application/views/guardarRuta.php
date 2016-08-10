@@ -18,7 +18,7 @@
 			    <br>
 			    <input type="hidden"  name="positions[]" id="positions">
 			    <button type="button" class="btn btn-info col-lg-5" onclick="save()">Guardar Rutas </button>
-			    <button type="button" onclick="getRoute()">Obtener rutas(Consola)</button>
+			    <!--button type="button" onclick="getRoute()">Obtener rutas(Consola)</button-->
 			    </div>
 			</div>
 		</div>

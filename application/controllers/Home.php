@@ -26,4 +26,6 @@ class Home extends CI_Controller
 	 //$data = array('name '  => $_POST['name']);
 	print_r($_POST);
 	}
+
+	
 }

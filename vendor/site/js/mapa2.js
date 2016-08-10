@@ -73,12 +73,12 @@ function getRoute(id)
 	info =  new google.maps.InfoWindow({content: alert});
 	$.ajax({
 		type: 'GET',
-		url: 'http://localhost/smarttracking/index.php/route/find/'+ id,
+		url: 'http://localhost/smarttracking/smarttracking/index.php/route/find/'+ id,
 		success: function (req)
 		{
 			$.ajax({
 			type: 'GET',
-			url: 'http://localhost/smarttracking/index.php/route/location/'+ id,
+			url: 'http://localhost/smarttracking/smarttracking/index.php/route/location/'+ id,
 			success: function (req2)
 			{
 				var pos = new google.maps.LatLng(req2.location[0]['latitud'],req2.location[0]['longitud']);

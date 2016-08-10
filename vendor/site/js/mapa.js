@@ -144,7 +144,7 @@ function save()
 
 	$.ajax({
 		type: "POST",
-		url: "http://localhost/smarttracking/index.php/route/index",
+		url: "http://localhost/smarttracking/smarttracking/index.php/route/index",
 		data: {lat:'32.123456', lon:'-16.21478', positions: cobertura },
 		success: function (req){
 			console.log(req)
@@ -156,7 +156,7 @@ function getRoute()
 {
 	$.ajax({
 		type: 'GET', 
-		url: 'http://localhost/smarttracking/index.php/route/find/'+ 1,
+		url: 'http://localhost/smarttracking/smarttracking/index.php/route/find/'+ 1,
 		success: function (req) 
 		{
 			var rutas = [];
