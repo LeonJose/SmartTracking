@@ -22,13 +22,13 @@ function obtenerRutas()
 		startMap();
 	});
 	startMap();
-	setInterval( startMap, 8000);
+//	setInterval( startMap, 8000);
 }
 
 
 function startMap()
 {
-	
+
 	centro = new google.maps.LatLng(latitud, longuitud); //Establecer el punto
 	var atributosMap=
 	{
@@ -69,26 +69,30 @@ function addMarker(mapa)
 
 function getRoute(id)
 {
+	var alert = "<div>Alerta el chofer ha salido de su ruta</div>";
+	info =  new google.maps.InfoWindow({content: alert});
 	$.ajax({
-		type: 'GET', 
+		type: 'GET',
 		url: 'http://localhost/smarttracking/index.php/route/find/'+ id,
 		success: function (req)
 		{
 			$.ajax({
-			type: 'GET', 
+			type: 'GET',
 			url: 'http://localhost/smarttracking/index.php/route/location/'+ id,
-			success: function (req2) 
+			success: function (req2)
 			{
 				var pos = new google.maps.LatLng(req2.location[0]['latitud'],req2.location[0]['longitud']);
-				 
+				$('#ruta').text(req2.location[0]['nombre_ruta']);
+				$('#temperatura').text(req2.location[0]['temperatura']);
+				$('#fecha').text(req2.location[0]['fecha']);
+				var truck = 'img/truck.png';
 				var marker = new google.maps.Marker({
 				      position: pos,
 				      map: mapa,
 				      title:"Ubiaccion Actual del Camion",
-				      animation: google.maps.Animation.DROP
+				      animation: google.maps.Animation.DROP,
+							icon: truck
 				  });
-				console.log(req2.location[0]['latitud']);
-				console.log(req);
 				var rutas = [];
 					$.each(req, function( index, value ) {
 					  $.each(value, function( index, v ) {
@@ -96,16 +100,22 @@ function getRoute(id)
 						});
 					});
 
-				var lineas = new google.maps.Polyline({        
+				var lineas = new google.maps.Polyline({
 			    path: rutas,
-			    map: mapa, 
-			    strokeColor: '#000', 
-			    strokeWeight: 4,  
+			    map: mapa,
+			    strokeColor: '#000',
+			    strokeWeight: 4,
 			    clickable: false});
 
-				if (google.maps.geometry.poly.isLocationOnEdge(pos, rutas, 10e-1)) {
-				    alert("Relocate!");
-				  }
+					if (google.maps.geometry.poly.isLocationOnEdge(pos, lineas))
+					{
+						console.log('Dentro del rango');
+					}
+					else
+					{
+						info.open(mapa, marker);
+						console.log("Fuera del rango")
+					}
 
 		    }
 

@@ -4836,7 +4836,7 @@ x:-o-prefocus,
  ========================================================================== */
 /**
  * Custom form elements
- *    - Checkbox 
+ *    - Checkbox
  *    - Radios
  *    - Switch
  *    - Rounded inputs
@@ -7396,7 +7396,7 @@ body .jvectormap-zoomout {
   max-width: 100%;
   min-width: 100%;
 }
-/** 
+/**
  * Displays hidden content on hover. Add this class to the parent element.
  * Markup
  *   <div class="hover-visible">
@@ -7749,3 +7749,13 @@ fieldset[disabled] .flatdoc-wrapper .button.focus {
   color: #23b7e5;
   background-color: #ffffff;
 }
+img[src*="gstatic.com/"], img[src*="googleapis.com/"] {
+max-width: none !important;
+}
+
+img[src*="https://maps.gstatic.com/mapfiles/api-3/images/mapcnt6.png/"], img[src*="https://maps.gstatic.com/mapfiles/api-3/images/mapcnt6.png"] {
+
+max-width: none !important;
+}
+
+.gm-style-iw { background-color: #f05050; color: #fff; padding: 5px;}
