@@ -21,7 +21,7 @@
    <!-- WEATHER ICONS-->
    <link rel="stylesheet" href="vendor/weather-icons/css/weather-icons.min.css">
    <!-- =============== BOOTSTRAP STYLES ===============-->
-   <link rel="stylesheet" href="vendor/site/css/bootstrap.css" id="bscss">
+   <link rel="stylesheet" href="vendor/site/css/bootstrap.css" id="bscss">----
    <!-- =============== APP STYLES ===============-->
    <link rel="stylesheet" href="vendor/site/css/app.css" id="maincss">
 
@@ -44,7 +44,7 @@
             <div class="navbar-header">
                <a href="#/" class="navbar-brand">
                   <div class="brand-logo">
-                     <img src="img/logo.png" alt="App Logo" class="img-responsive">
+                     <img src="img/sispro.png" alt="App Logo" class="img-responsive">
                   </div>
                   <div class="brand-logo-collapsed">
                      <img src="img/logo-single.png" alt="App Logo" class="img-responsive">

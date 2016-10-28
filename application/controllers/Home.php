@@ -14,7 +14,14 @@ class Home extends CI_Controller
 
 	public function index()
 	{
-		$this->load->view('main');
+
+		$this->load->view('log_in');
+	}
+
+
+	public function inicio()
+	{
+		$this->load->view('main2');
 		$this->load->view('dashboard');
 		$this->load->view('footer');
 	}

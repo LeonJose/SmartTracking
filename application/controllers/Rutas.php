@@ -13,7 +13,7 @@ class Rutas extends CI_Controller
 
   public function generarRuta()
   {
-    $this->load->view('main');
+    $this->load->view('main2');
     $this->load->view('guardarRuta');
     $this->load->view('footer');
   }

@@ -1,4 +1,3 @@
-<base href="<?= base_url() ?>"></base>
 <div id="mapa"></div>
 <div class="row">
 	<div class="col-lg-12">
@@ -27,4 +26,4 @@
 </div>
 </form>
 <script type="text/javascript" src="vendor/site/js/mapa.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDQpAltksQGBLkPx5BJb8Mxo_pWPFxkipM&signed_in=true&libraries=places&callback=startMap" async defer></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASo4CStRsaBw-IaFaE_YFzgX64YstKYmY&signed_in=true&libraries=places&callback=startMap" async defer></script>
