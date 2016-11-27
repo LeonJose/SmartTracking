@@ -144,7 +144,7 @@ function save()
 
 	$.ajax({
 		type: "POST",
-		url: "http://smarttracking.esy.es/index.php/route/index",
+		url: "http://localhost/smarttracking/index.php/route/index",
 		data: {lat:'32.123456', lon:'-16.21478', positions: cobertura },
 		success: function (req){
 			console.log(req)
@@ -155,9 +155,9 @@ function save()
 function getRoute()
 {
 	$.ajax({
-		type: 'GET', 
-		url: 'http://smarttracking.esy.es/index.php/route/find/'+ 1,
-		success: function (req) 
+		type: 'GET',
+		url: 'http://localhost/smarttracking/index.php/route/find/'+ 1,
+		success: function (req)
 		{
 			var rutas = [];
 				$.each(req, function( index, value ) {
@@ -166,11 +166,11 @@ function getRoute()
 					});
 				});
 
-			var lineas = new google.maps.Polyline({        
+			var lineas = new google.maps.Polyline({
 		    path: rutas,
-		    map: mapa, 
-		    strokeColor: '#000', 
-		    strokeWeight: 4,  
+		    map: mapa,
+		    strokeColor: '#000',
+		    strokeWeight: 4,
 		    clickable: false});
 		}
 

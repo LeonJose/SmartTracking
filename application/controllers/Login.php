@@ -9,50 +9,44 @@ class Login extends CI_Controller{
 		$this->load->model('Login_model','loggin',TRUE);//carga el mo
 		$this->load->helper('url');
 		$this->load->helper('form');
+
 	}
 
 	public function index()
 	{
-		$this->load->view('log_in');
-	}
-
-	public function agregar()
-	{
-		$this->load->view('agregar',$data);
-		$this->load->view('footer');
-	}
-	public function insertar()
-	{ /*die();*/
-		if (!empty($_POST['txtemail']) && !empty($_POST['txtpassword']) && !empty($_POST['txtnombre']) && !empty($_POST['txtapellidos']))
+		if($this->session->userdata('id_usuario'))
 		{
-			$datos = array(
-				"correo" => $_POST['txtemail'],
-				"contrasena" => $_POST['txtpassword'],
-				"nombre" => $_POST['txtnombre'],
-				"apellido" => $_POST['txtapellidos']
-				);
-			$this->loggin->insertar($datos);
-
+			redirect('home/inicio');
+		}
+		else
+		{
+			$data['valido'] = true;
+			$this->load->view('log_in',$data);
 		}
 	}
 
 	public function validar()
 	{
-	   if($_POST)
-		  {
-	      $datos = $this->loggin->validar($_POST);
-	      if(count($datos)>0)
-	      {
-	        $valido = true;
-	        $this->session->set_userdata($datos);
-	        redirect('usuario/agregar');
-	      }
-	      else
-	      {
-	        $data['valido'] = false;
-	        $this->load->view("log_in",$data);
-	      }
-		}
+		  if($_POST)
+			{
+		      $datos = $this->loggin->validar($_POST);
+		      if(count($datos)>0)
+		      {
+		        $this->session->set_userdata($datos[0]);
+		        redirect('home');
+		      }
+		      else
+		      {
+		        $data['valido'] = false;
+		        $this->load->view("log_in",$data);
+		      }
+			}
+	 }
+
+	 public function logout()
+	 {
+		 session_destroy();
+		 redirect('login');
 	 }
 }
 ?>

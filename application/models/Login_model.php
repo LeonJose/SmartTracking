@@ -9,16 +9,19 @@ class Login_model  extends CI_Model
 
 	public function insertar($datos)
 	{
-	
+
 		return $this->db->insert('usuarios', $datos);
 	}
 
 	public function validar($datos)
 	{
-		$instruccion= 'select id_usuario, correo from usuarios where correo = "'.$datos['emailinput'].'" and contrasena ="'.$datos['passwordinput'].'";';
-		$query = $this->db->query($instruccion);
-
-		return $query->result();
+		$this->db->select('id_usuario, correo, nombre, apellido');
+		$this->db->from('usuarios');
+		$this->db->where('correo',$datos['correo']);
+		$this->db->where('contrasena',md5($datos['contrasena']));
+		$query= $this->db->get()->result_array();
+		return $query;
+		$query->free_result();
 	}
 }
 ?>

@@ -73,4 +73,4 @@
 </div-->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASo4CStRsaBw-IaFaE_YFzgX64YstKYmY&signed_in=true&libraries=geometry,places&callback=obtenerRutas" async defer></script>
 
-<script type="text/javascript" src="vendor/site/js/mapa2.js"></script>
+<script type="text/javascript" src="assets/site/js/mapa2.js"></script>

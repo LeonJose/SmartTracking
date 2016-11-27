@@ -10,12 +10,15 @@ class Home extends CI_Controller
 		$this->load->helper('form');
 		$this->load->helper('url');
 		$this->load->helper('array');
+		if(!$this->session->userdata('id_usuario'))
+		{
+			redirect('login');
+		}
 	}
 
 	public function index()
 	{
-
-		$this->load->view('log_in');
+			redirect('home/inicio');
 	}
 
 
@@ -34,5 +37,5 @@ class Home extends CI_Controller
 	print_r($_POST);
 	}
 
-	
+
 }
